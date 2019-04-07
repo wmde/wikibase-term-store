@@ -7,26 +7,26 @@ namespace Wikibase\TermStore\PackagePrivate\Doctrine;
 use Doctrine\DBAL\Schema\AbstractSchemaManager;
 use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Types\Type;
-use Onoi\MessageReporter\MessageReporter;
+use Wikibase\TermStore\InstallationEventHandler;
 
 class DoctrineSchemaCreator {
 
 	private $schemaManager;
 	private $tableNames;
-	private $reporter;
+	private $events;
 
-	public function __construct( AbstractSchemaManager $schemaManager, TableNames $tableNames, MessageReporter $reporter ) {
+	public function __construct( AbstractSchemaManager $schemaManager, TableNames $tableNames, InstallationEventHandler $events ) {
 		$this->schemaManager = $schemaManager;
 		$this->tableNames = $tableNames;
-		$this->reporter = $reporter;
+		$this->events = $events;
 	}
 
 	public function createSchema() {
 		if ( $this->schemaManager->tablesExist( $this->tableNames->itemTerms() ) ) {
-			$this->reporter->reportMessage( 'Wikibase Term Store is already installed' );
+			$this->events->onAlreadyInstalled();
 		}
 		else {
-			$this->reporter->reportMessage( 'Installing Wikibase Term Store... ' );
+			$this->events->onStartedInstall();
 
 			$this->schemaManager->createTable( $this->newItemTermsTable() );
 			$this->schemaManager->createTable( $this->newPropertyTermsTable() );
@@ -34,7 +34,7 @@ class DoctrineSchemaCreator {
 			$this->schemaManager->createTable( $this->newTextInLangTable() );
 			$this->schemaManager->createTable( $this->newTextTable() );
 
-			$this->reporter->reportMessage( "done\n" );
+			$this->events->onFinishedInstall();
 		}
 	}
 

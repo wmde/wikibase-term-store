@@ -8,7 +8,7 @@ use Onoi\MessageReporter\MessageReporter;
 
 interface TermStore {
 
-	public function install( MessageReporter $reporter = null );
+	public function install( InstallationEventHandler $eventHandler = null );
 
 	/**
 	 * CAUTION! This removes all data!

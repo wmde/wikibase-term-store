@@ -24,7 +24,7 @@ class DoctrineTermStore implements TermStore {
 		$this->tableNames = new TableNames( $tableNamePrefix );
 	}
 
-	public function install( MessageReporter $reporter = null ) {
+	public function install( InstallationEventHandler $eventHandler = null ) {
 		( new DoctrineSchemaCreator(
 			$this->connection->getSchemaManager(),
 			$this->tableNames,
