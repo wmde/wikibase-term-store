@@ -4,27 +4,17 @@
 [![Latest Stable Version](https://poser.pugx.org/wikibase/term-store/version.png)](https://packagist.org/packages/wikibase/term-store)
 [![Download count](https://poser.pugx.org/wikibase/term-store/d/total.png)](https://packagist.org/packages/wikibase/term-store)
 
-Small library for looking up terms by item or property id or finding ids by term.
+Tiny library that defines the interface for term persistence of Wikibase entities.
 
 ## Usage
 
-The public entry point of the package is `DoctrineTermStore`, which is used to construct all services.
+Real implementations of the interface can be found in
+[dependent packages](https://packagist.org/packages/wikibase/term-store/dependents).
 
-```php
-$termStore = new DoctrineTermStore( /* config */ );
-```
+This library does provide some trivial implementations, mainly to facilitate testing.
 
-Getting terms:
-
-```php
-$fingerprint = $termStore->newPropertyTermStore()->getTerms( $propertyId );
-```
-
-Schema creation:
-
-```php
-$termStore->install();
-```
+* `InMemoryPropertyTermStore` - simple in memory Fake
+* `ThrowingPropertyTermStore` - throws an exception when one of its methods is invoked
 
 ## Installation
 
