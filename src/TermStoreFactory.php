@@ -6,4 +6,6 @@ interface TermStoreFactory {
 
 	public function newPropertyTermStore(): PropertyTermStore;
 
+	public function newItemTermStore(): ItemTermStore;
+
 }
