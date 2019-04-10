@@ -1,33 +1,39 @@
 <?php
 
-namespace Wikibase\TermStore\InMemory;
+namespace Wikibase\TermStore\Implementations;
 
 use Wikibase\DataModel\Entity\PropertyId;
 use Wikibase\DataModel\Term\Fingerprint;
 use Wikibase\TermStore\PropertyTermStore;
 use Wikibase\TermStore\TermStoreException;
 
-class ThrowingPropertyTermStore implements PropertyTermStore {
+class InMemoryPropertyTermStore implements PropertyTermStore {
+
+	private $fingerprints = [];
 
 	/**
 	 * @throws TermStoreException
 	 */
 	public function storeTerms( PropertyId $propertyId, Fingerprint $terms ) {
-		throw new TermStoreException();
+		$this->fingerprints[$propertyId->getNumericId()] = $terms;
 	}
 
 	/**
 	 * @throws TermStoreException
 	 */
 	public function deleteTerms( PropertyId $propertyId ) {
-		throw new TermStoreException();
+		unset( $this->fingerprints[$propertyId->getNumericId()] );
 	}
 
 	/**
 	 * @throws TermStoreException
 	 */
 	public function getTerms( PropertyId $propertyId ): Fingerprint {
-		throw new TermStoreException();
+		if ( array_key_exists( $propertyId->getNumericId(), $this->fingerprints ) ) {
+			return $this->fingerprints[$propertyId->getNumericId()];
+		}
+
+		return new Fingerprint();
 	}
 
 }

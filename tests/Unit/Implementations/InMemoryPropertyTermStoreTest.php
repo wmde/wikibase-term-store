@@ -1,16 +1,16 @@
 <?php
 
-namespace Wikibase\TermStore\Tests\Unit\InMemory;
+namespace Wikibase\TermStore\Tests\Unit\Implementations;
 
 use PHPUnit\Framework\TestCase;
 use Wikibase\DataModel\Entity\PropertyId;
 use Wikibase\DataModel\Term\Fingerprint;
 use Wikibase\DataModel\Term\Term;
 use Wikibase\DataModel\Term\TermList;
-use Wikibase\TermStore\InMemory\InMemoryPropertyTermStore;
+use Wikibase\TermStore\Implementations\InMemoryPropertyTermStore;
 
 /**
- * @covers \Wikibase\TermStore\InMemory\InMemoryPropertyTermStore
+ * @covers \Wikibase\TermStore\Implementations\InMemoryPropertyTermStore
  */
 class InMemoryPropertyTermStoreTest extends TestCase {
 
