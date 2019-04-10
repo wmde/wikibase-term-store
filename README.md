@@ -6,6 +6,16 @@
 
 Tiny library that defines the interface for term persistence of Wikibase entities.
 
+## Usage
+
+Real implementations of the interface can be found in
+[dependent packages](https://packagist.org/packages/wikibase/term-store/dependents).
+
+This library does provide some trivial implementations, mainly to facilitate testing.
+
+* `InMemoryPropertyTermStore` - simple in memory Fake
+* `ThrowingPropertyTermStore` - throws an exception when one of its methods is invoked
+
 ## Installation
 
 To use the Wikibase TermStore library in your project, simply add a dependency on wikibase/term-store
