@@ -15,6 +15,8 @@ This library does provide some trivial implementations, mainly to facilitate tes
 
 * `InMemoryPropertyTermStore` - simple in memory Fake
 * `ThrowingPropertyTermStore` - throws an exception when one of its methods is invoked
+* `InMemoryItemTermStore` - simple in memory Fake
+* `ThrowingItemTermStore` - throws an exception when one of its methods is invoked
 
 ## Installation
 
