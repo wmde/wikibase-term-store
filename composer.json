@@ -23,6 +23,21 @@
 		"mediawiki/mediawiki-codesniffer": "~23.0",
 		"phpstan/phpstan": "~0.9.2"
 	},
+	"scripts": {
+		"test": [
+			"composer validate --no-interaction",
+			"phpunit --coverage-php /dev/null"
+		],
+		"cs": [
+			"phpcs -p -s",
+			"covers-validator"
+		],
+		"ci": [
+			"@cs",
+			"@test"
+		],
+		"stan": "phpstan analyse --level=1 --no-progress src/ tests/"
+	},
 	"autoload": {
 		"psr-4": {
 			"Wikibase\\TermStore\\": "src/"

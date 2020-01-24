@@ -40,15 +40,15 @@ Start by installing the project dependencies by executing
 
 You can run the tests by executing
 
-    make test
+    composer test
     
 You can run the style checks by executing
 
-    make cs
+    composer cs
     
 To run all CI checks, execute
 
-    make ci
+    composer ci
     
 You can also invoke PHPUnit directly to pass it arguments, as follows
 
