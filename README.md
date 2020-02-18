@@ -1,3 +1,5 @@
+DEPRECATED: Similar interfaces have been added to [wikibase/data-model-services](https://github.com/wmde/WikibaseDataModelServices) and continue to be maintained as part of that library.
+
 # Wikibase TermStore
 
 [![Build Status](https://travis-ci.org/wmde/wikibase-term-store.svg?branch=master)](https://travis-ci.org/wmde/wikibase-term-store)
